@@ -34,8 +34,14 @@ public class DigidexServiceImpl implements DigidexService {
 
     @Override
     public DigidexDTO getById(Integer id) {
-        validateEntityExists(id);
-        return modelMapper.map(digidexRepository.findById(id), DigidexDTO.class);
+        validateEntityExistsById(id);
+        return modelMapper.map(digidexRepository.findById(id).get(), DigidexDTO.class);
+    }
+
+    @Override
+    public DigidexDTO getByName(String name) {
+        validateEntityExistsByName(name);
+        return modelMapper.map(digidexRepository.findByName(name).stream().findFirst().get(), DigidexDTO.class);
     }
 
     @Override
@@ -48,7 +54,7 @@ public class DigidexServiceImpl implements DigidexService {
 
     @Override
     public DigidexDTO update(DigidexDTO digidexDTO) {
-        validateEntityExists(digidexDTO.getId());
+        validateEntityExistsById(digidexDTO.getId());
         validateDuplicatedDigimon(digidexDTO);
         return modelMapper.map(
                 digidexRepository.save(modelMapper.map(digidexDTO, Digidex.class)),
@@ -59,15 +65,20 @@ public class DigidexServiceImpl implements DigidexService {
     public void deleteById(Integer id) {
     }
 
+    private void validateEntityExistsByName(String name) {
+        if(digidexRepository.findByName(name).isEmpty()) {
+            throw new NotFoundException();
+        }
+    }
 
-    private void validateEntityExists(Integer id) {
+    private void validateEntityExistsById(Integer id) {
         if(digidexRepository.findById(id).isEmpty()) {
             throw new NotFoundException();
         }
     }
 
     private void validateDuplicatedDigimon(DigidexDTO digidexDTO) {
-        Optional<Digidex> digidexTryToSave = digidexRepository.findByNameAndType(digidexDTO.getName(), digidexDTO.getType()).stream().findFirst();
+        Optional<Digidex> digidexTryToSave = digidexRepository.findByNameAndAttribute(digidexDTO.getName(), digidexDTO.getAttribute()).stream().findFirst();
         if(digidexTryToSave.isPresent() && !modelMapper.map(digidexTryToSave.get(), DigidexDTO.class).equals(digidexDTO)
         ) {
             throw new UnprocessableEntityException();

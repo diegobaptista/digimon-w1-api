@@ -15,6 +15,9 @@ public class Digidex {
     private Integer id;
     private String name;
     @Enumerated(EnumType.STRING)
-    private DigimonTypes type;
+    private DigimonLevels level;
+    private String type;
+    @Enumerated(EnumType.STRING)
+    private DigimonAttributes attribute;
     private String image;
 }

@@ -23,10 +23,16 @@ public class DigidexController {
         return digidexService.list();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public DigidexDTO getById(@PathVariable Integer id) {
         return digidexService.getById(id);
     }
+
+    @GetMapping("/name/{name}")
+    public DigidexDTO getById(@PathVariable String name) {
+        return digidexService.getByName(name);
+    }
+
 
     @PostMapping
     public DigidexDTO save(@RequestBody DigidexDTO digidexDTO) {
