@@ -8,11 +8,16 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
+@Table(name = "digidex",
+        uniqueConstraints=
+        @UniqueConstraint(columnNames={"name"})
+)
 public class Digidex {
     @Id
     //Add strategy SERIAL TYPE
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column
     private String name;
     @Enumerated(EnumType.STRING)
     private DigimonLevels level;

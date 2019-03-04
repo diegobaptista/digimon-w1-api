@@ -4,14 +4,12 @@ import domain.digidex.Digidex;
 import domain.digidex.DigidexRepository;
 import domain.digidex.DigidexService;
 import infra.error.NotFoundException;
-import infra.error.UnprocessableEntityException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import presentation.digidex.DigidexDTO;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,7 +44,7 @@ public class DigidexServiceImpl implements DigidexService {
 
     @Override
     public DigidexDTO save(DigidexDTO digidexDTO) {
-        validateDuplicatedDigimon(digidexDTO);
+//        validateDuplicatedDigimon(digidexDTO);
         return modelMapper.map(
                 digidexRepository.save(modelMapper.map(digidexDTO, Digidex.class)),
                 DigidexDTO.class);
@@ -55,7 +53,7 @@ public class DigidexServiceImpl implements DigidexService {
     @Override
     public DigidexDTO update(DigidexDTO digidexDTO) {
         validateEntityExistsById(digidexDTO.getId());
-        validateDuplicatedDigimon(digidexDTO);
+//        validateDuplicatedDigimon(digidexDTO);
         return modelMapper.map(
                 digidexRepository.save(modelMapper.map(digidexDTO, Digidex.class)),
                 DigidexDTO.class);
@@ -63,6 +61,8 @@ public class DigidexServiceImpl implements DigidexService {
 
     @Override
     public void deleteById(Integer id) {
+        validateEntityExistsById(id);
+        digidexRepository.deleteById(id);
     }
 
     private void validateEntityExistsByName(String name) {
@@ -77,12 +77,12 @@ public class DigidexServiceImpl implements DigidexService {
         }
     }
 
-    private void validateDuplicatedDigimon(DigidexDTO digidexDTO) {
-        Optional<Digidex> digidexTryToSave = digidexRepository.findByNameAndAttribute(digidexDTO.getName(), digidexDTO.getAttribute()).stream().findFirst();
-        if(digidexTryToSave.isPresent() && !modelMapper.map(digidexTryToSave.get(), DigidexDTO.class).equals(digidexDTO)
-        ) {
-            throw new UnprocessableEntityException();
-        }
-    }
+//    private void validateDuplicatedDigimon(DigidexDTO digidexDTO) {
+//        Optional<Digidex> digidexTryToSave = digidexRepository.findByNameAndAttribute(digidexDTO.getName(), digidexDTO.getAttribute()).stream().findFirst();
+//        if(digidexTryToSave.isPresent() && !modelMapper.map(digidexTryToSave.get(), DigidexDTO.class).equals(digidexDTO)
+//        ) {
+//            throw new UnprocessableEntityException();
+//        }
+//    }
 
 }

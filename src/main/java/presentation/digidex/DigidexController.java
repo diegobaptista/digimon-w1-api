@@ -1,10 +1,12 @@
 package presentation.digidex;
 
-import domain.digidex.Digidex;
 import domain.digidex.DigidexService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -19,29 +21,35 @@ public class DigidexController {
     }
 
     @GetMapping
-    public List<DigidexDTO> list() {
-        return digidexService.list();
+    public ResponseEntity<List<DigidexDTO>> list() {
+        return new ResponseEntity<>(digidexService.list(), HttpStatus.OK);
     }
 
     @GetMapping("/id/{id}")
-    public DigidexDTO getById(@PathVariable Integer id) {
-        return digidexService.getById(id);
+    public ResponseEntity<DigidexDTO> getById(@PathVariable Integer id) {
+        return new ResponseEntity<>(digidexService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping("/name/{name}")
-    public DigidexDTO getById(@PathVariable String name) {
-        return digidexService.getByName(name);
+    public ResponseEntity<DigidexDTO> getById(@PathVariable String name) {
+        return new ResponseEntity<>(digidexService.getByName(name), HttpStatus.OK);
     }
 
 
     @PostMapping
-    public DigidexDTO save(@RequestBody DigidexDTO digidexDTO) {
-        return digidexService.save(digidexDTO);
+    public ResponseEntity<DigidexDTO> save(@RequestBody DigidexDTO digidexDTO) {
+        return new ResponseEntity<>(digidexService.save(digidexDTO), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public DigidexDTO update(@RequestBody DigidexDTO digidexDTO) {
-        return digidexService.update(digidexDTO);
+    public ResponseEntity<DigidexDTO> update(@RequestBody DigidexDTO digidexDTO) {
+        return new ResponseEntity<>(digidexService.update(digidexDTO), HttpStatus.OK);
+    }
+
+    @DeleteMapping("id/{id}")
+    public ResponseEntity deleteById(@PathVariable Integer id) {
+        digidexService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
