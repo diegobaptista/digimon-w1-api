@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"presentation", "domain", "infra"})
 @EnableJpaRepositories("domain")
 @EntityScan("domain")
-public class PokemonApiApplication {
+public class DigimonApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(PokemonApiApplication.class, args);
+        SpringApplication.run(DigimonApiApplication.class, args);
     }
 }
