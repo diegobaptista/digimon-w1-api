@@ -1,4 +1,4 @@
-package infra;
+package config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"presentation", "domain", "infra"})
+@ComponentScan({"presentation", "domain", "config"})
 @EnableJpaRepositories("domain")
 @EntityScan("domain")
 public class DigimonApiApplication {

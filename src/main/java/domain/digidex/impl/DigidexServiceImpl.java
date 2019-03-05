@@ -3,7 +3,7 @@ package domain.digidex.impl;
 import domain.digidex.Digidex;
 import domain.digidex.DigidexRepository;
 import domain.digidex.DigidexService;
-import infra.error.NotFoundException;
+import config.error.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

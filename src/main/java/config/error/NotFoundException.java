@@ -1,4 +1,4 @@
-package infra.error;
+package config.error;
 
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
