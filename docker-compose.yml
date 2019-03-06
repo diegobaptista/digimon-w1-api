@@ -1,6 +1,6 @@
 version: "3"
 services:
-  postgres-digi-api:
+  postgres-digi-database:
     image: postgres:9.6
     container_name: "postgres-digi-api"
     environment:
