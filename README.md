@@ -10,6 +10,8 @@ This incredible game
 
 ![Digimon World 1](https://66.media.tumblr.com/52c40535095a4c8f4bb6e46649893ec8/tumblr_ns6k3mM42o1scncwdo1_500.gif)
 
+For now there are just CRUDs and basic features.
+
 ### You need to run the project
 
 * [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
