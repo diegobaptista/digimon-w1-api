@@ -17,6 +17,13 @@ spring:
         ddl-auto: validate
         temp:
           use_jdbc_metadata_defaults: false
+  banner:
+    immage:
+      location: banner.txt
+
+  output:
+    ansi:
+      enabled: ALWAYS
 
 flyway:
   enabled: true
