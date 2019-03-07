@@ -9,5 +9,5 @@ public interface DigimonService {
     DigimonDTO getByName(String name);
     DigimonDTO save(DigimonDTO digimonDTO);
     DigimonDTO update(DigimonDTO digimonDTO);
-    void deleteById(Integer id);
+    void deleteById(String name);
 }
