@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -24,5 +25,10 @@ public class DigimonController {
     @GetMapping
     public ResponseEntity<List<DigimonDTO>> list() {
         return new ResponseEntity<>(digimonService.list(), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<DigimonDTO> getByName(@RequestParam String name) {
+        return new ResponseEntity<>(digimonService.getByName(name), HttpStatus.OK);
     }
 }
