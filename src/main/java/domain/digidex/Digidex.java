@@ -8,10 +8,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "digidex",
-        uniqueConstraints=
-        @UniqueConstraint(columnNames={"name"})
-)
+@Table(name = "digidex")
 public class Digidex {
     @Id
     //Add strategy SERIAL TYPE
