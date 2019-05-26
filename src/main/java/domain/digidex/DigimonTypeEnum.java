@@ -1,5 +1,5 @@
 package domain.digidex;
 
-public enum DigimonType {
+public enum DigimonTypeEnum {
     FIRE, BATTLE, AIR, EARTH, WATER, MECH, FILTH
 }

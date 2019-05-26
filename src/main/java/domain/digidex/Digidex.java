@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -19,9 +20,16 @@ public class Digidex {
     @Enumerated(EnumType.STRING)
     private DigimonLevel level;
     @Enumerated(EnumType.STRING)
-    private DigimonActive active;
+    private DigimonActive activePeriod;
     @Enumerated(EnumType.STRING)
     private DigimonCategory attribute;
+
+    @ManyToMany
+    @JoinTable(
+            name = "digidex_digidextype",
+            joinColumns = @JoinColumn(name = "id_digidex"),
+            inverseJoinColumns = @JoinColumn(name = "name_type"))
+    Set<DigidexType> types;
 
 
 
