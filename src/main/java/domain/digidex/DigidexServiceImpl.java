@@ -1,4 +1,4 @@
-package domain.digidex.impl;
+package domain.digidex;
 
 import domain.digidex.Digidex;
 import domain.digidex.DigidexRepository;

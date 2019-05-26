@@ -17,9 +17,13 @@ public class Digidex {
     @Column
     private String name;
     @Enumerated(EnumType.STRING)
-    private DigimonLevels level;
-    private String type;
+    private DigimonLevel level;
     @Enumerated(EnumType.STRING)
-    private DigimonAttributes attribute;
+    private DigimonActive active;
+    @Enumerated(EnumType.STRING)
+    private DigimonCategory attribute;
+
+
+
     private String image;
 }

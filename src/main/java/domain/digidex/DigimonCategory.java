@@ -1,5 +1,5 @@
 package domain.digidex;
 
-public enum DigimonAttributes {
+public enum DigimonCategory {
     DATA, VIRUS, VACCINE
 }
