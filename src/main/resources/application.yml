@@ -25,9 +25,6 @@ spring:
     ansi:
       enabled: ALWAYS
 
-flyway:
-  enabled: true
-
 # Disable feature detection by this undocumented parameter. Check the org.hibernate.engine.jdbc.internal.JdbcServiceImpl.configure method for more details.
 # spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
 
