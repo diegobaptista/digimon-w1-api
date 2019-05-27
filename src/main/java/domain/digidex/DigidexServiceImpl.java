@@ -1,19 +1,12 @@
 package domain.digidex;
 
-import domain.digidex.Digidex;
-import domain.digidex.DigidexRepository;
-import domain.digidex.DigidexService;
 import config.error.NotFoundException;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import presentation.digidex.DigidexDTO;
-import presentation.digidex.DigidexTypeDTO;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,7 +21,7 @@ public class DigidexServiceImpl implements DigidexService {
     }
 
     @Override
-    public List<DigidexDTO> list() { ;
+    public List<DigidexDTO> list() {
         return digidexRepository.findAll().stream().map(digidex -> {
             return modelMapper.map(digidex, DigidexDTO.class);
         }).collect(Collectors.toList());

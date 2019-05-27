@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,7 +30,14 @@ public class Digidex {
             name = "digidex_digidextype",
             joinColumns = @JoinColumn(name = "id_digidex"),
             inverseJoinColumns = @JoinColumn(name = "name_type"))
-    List<DigidexType> types;
+    private List<DigidexType> types;
 
     private String image;
+
+    @ManyToMany
+    @JoinTable(
+            name = "digidex_digivolution",
+            joinColumns = @JoinColumn(name = "id_digidex"),
+            inverseJoinColumns = @JoinColumn(name = "id_digidex_digivolution"))
+    private List<Digidex> digivolutions;
 }

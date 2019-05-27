@@ -16,4 +16,5 @@ public class DigidexDTO {
     private String image;
     private List<DigidexTypeDTO> types;
     private DigimonActive activePeriod;
+    private List<DigidexDTO> digivolutions;
 }
